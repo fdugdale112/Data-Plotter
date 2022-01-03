@@ -63,15 +63,14 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Row(
 
           children: DataPlotter.instance.sources.map((source) =>
-            Expanded(child: DataSourceWidget(dataSource: source))
+            Expanded(child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: DataSourceWidget(dataSource: source),
+            ))
           ).toList(),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+
     );
   }
 }

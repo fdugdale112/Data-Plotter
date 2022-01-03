@@ -77,12 +77,25 @@ class _DataSourceWidgetState extends State<DataSourceWidget> {
                         ],
                       );
                     }
-                    return SpinKitFadingCube( color: Theme.of(context).primaryColor,);
+                    return loading();
                   });
             }
-            return SpinKitFadingCube( color: Theme.of(context).primaryColor,);
+            return loading();
           }
       ),
+    );
+  }
+
+  Widget loading(){
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        FittedBox(child: SpinKitFadingCube( color: Theme.of(context).primaryColor,)),
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: FittedBox(child: Text(widget.dataSource.title, style: TextStyle(color: Colors.white70, fontSize: 45))),
+        ),
+      ],
     );
   }
 }

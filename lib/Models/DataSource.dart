@@ -27,12 +27,12 @@ class DataSource{
       if (connectionStatus?.state == MqttConnectionState.connected)
       {
           subscription = _client.subscribe(topic, MqttQos.atLeastOnce);
-          _client.autoReconnect = true;
+          //_client.autoReconnect = true;
           // subscription?.changes.listen((event) {
           //   print(event);
           // });
       }
-    } on Exception catch (e) {
+    } catch (e) {
       if (kDebugMode) {
         print(e);
       }
