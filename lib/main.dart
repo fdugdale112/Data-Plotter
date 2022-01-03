@@ -60,10 +60,10 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
 
-        child: Stack(
+        child: Row(
 
           children: DataPlotter.instance.sources.map((source) =>
-            DataSourceWidget(dataSource: source)
+            Expanded(child: DataSourceWidget(dataSource: source))
           ).toList(),
         ),
       ),

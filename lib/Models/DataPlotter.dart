@@ -13,7 +13,8 @@ class DataPlotter {
   DataPlotter._internal(){
     sources = List.empty(growable: true);
     
-    addSource(DataSource(MQTT_SERVER, TEMPERATURE_TOPIC, IO_USERNAME, IO_KEY));
+    addSource(DataSource(MQTT_SERVER, TEMPERATURE_TOPIC, IO_USERNAME, IO_KEY, descriptor: "°C", name: "Temperature"));
+    addSource(DataSource(MQTT_SERVER, HUMIDITY_TOPIC, IO_USERNAME, IO_KEY, descriptor: "%", name: "Humidity"));
 
   }
 

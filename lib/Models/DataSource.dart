@@ -8,7 +8,7 @@ import 'Item.dart';
 
 class DataSource{
 
-  DataSource(this.server, this.topic, this.username, this.key){
+  DataSource(this.server, this.topic, this.username, this.key, {this.descriptor = "", this.name}){
     _client = MqttServerClient.withPort(server, id, 1883);
     data = List.empty(growable: true);
     //client.keepAlivePeriod = 300;
@@ -47,6 +47,7 @@ class DataSource{
   Subscription? subscription;
 
   bool get connected => subscription != null;
+  String get title => name ?? topic;
   Stream<Item>? get updates => _client.updates?.map(initialiseItem);
 
   String id = clientIdentifier;
@@ -54,6 +55,8 @@ class DataSource{
   String server;
   String username;
   String key;
+  String descriptor;
+  String? name;
   late List<Item> data;
 
   Item initialiseItem(List<MqttReceivedMessage<MqttMessage>> event) {
